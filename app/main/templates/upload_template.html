@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for doc in docs %}
+        <p>
+            <a href="{{ doc.file.url }}">{{ doc.id }} {{ doc.title }}</a>
+            <br/>
+            <a href="/storage/get_media/">{{ doc.id }} {{ doc.title }}</a>
+        </p>
+    {% endfor %}
+</body>
+</html>

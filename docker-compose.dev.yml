@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./app/main
+    command: python app/main/manage.py runserver 0.0.0.0:8000
+    expose:
+      - 8000
+    env_file:
+      - ./.env.dev
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+    volumes:
+      - .:/code
+
+
+# docker-compose -f docker-compose.dev.yml up -d
+# docker-compose -f docker-compose.dev.yml down
